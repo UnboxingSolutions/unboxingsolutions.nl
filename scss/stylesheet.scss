@@ -1,3 +1,4 @@
+@import 'reset';
 
 $theme-color: #026160;
 $body-background-color: #8fa3b5;
@@ -20,6 +21,10 @@ body {
 
 p {
 	font-size: 12px;
+	line-height: 15px;
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 a {
@@ -84,6 +89,8 @@ header {
 
 	ul {
 		list-style-type: none;
+		margin-top: 1em;
+		margin-bottom: 1em;
 
 		li {
 			display: inline;
@@ -142,6 +149,7 @@ h1 {
 
 h2 {
 	font-size: 13px;
+	font-weight: bold;
 	color: $theme-color;
 }
 
