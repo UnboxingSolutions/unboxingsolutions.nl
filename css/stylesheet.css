@@ -39,7 +39,7 @@ header {
       padding: 16px; } }
   header .title {
     font-size: 42px; }
-    @media screen and (max-width: 460px) {
+    @media screen and (max-width: 500px) {
       header .title {
         font-size: 30px; } }
   header .description {
@@ -58,23 +58,23 @@ header {
     .bar ul li {
       display: inline;
       white-space: nowrap; }
-      @media screen and (max-width: 460px) {
+      @media screen and (max-width: 500px) {
         .bar ul li {
           display: block; } }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 500px) {
   .narrow {
     display: inherit; } }
 
-@media screen and (min-width: 461px) {
+@media screen and (min-width: 501px) {
   .narrow {
     display: none; } }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 500px) {
   .wide {
     display: none; } }
 
-@media screen and (min-width: 461px) {
+@media screen and (min-width: 501px) {
   .wide {
     display: inherit; } }
 
@@ -85,7 +85,7 @@ header {
   text-align: left;
   border-top: 1px solid #bbbbbb;
   border-bottom: 1px solid #ffffff; }
-  @media screen and (max-width: 460px) {
+  @media screen and (max-width: 500px) {
     .content {
       padding: 16px; } }
   .content .title {
