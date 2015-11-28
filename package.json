@@ -1,7 +1,7 @@
 {
-  "name": "pruijs.nl",
+  "name": "unboxingsolutions.nl",
   "version": "1.0.0",
-  "description": "Jurriaan Pruijs's website",
+  "description": "Unboxing Solutions website",
   "author": "Jurriaan Pruijs",
   "devDependencies": {
   	"gulp": "^3.9.0",
