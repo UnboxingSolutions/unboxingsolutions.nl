@@ -2,15 +2,16 @@
 
 $theme-color: #026160;
 $body-background-color: #8fa3b5;
-$header-text-color : #ffffff;
 $bar-background-color: #ffffff;
 $bar-text-color: #222222;
-$content-background-color: #dddddd;
-$content-border-top-color: #bbbbbb;
+
+$content-background-color: #d4ddd6;
 $opacity: 0.7;
-$content-border-bottom-color: $bar-background-color;
+
+$border: solid 2px $body-background-color;
 
 $screen-width-treshhold: 500px;
+
 
 body {
 	margin: 0;
@@ -20,11 +21,10 @@ body {
 }
 
 p {
-	font-size: 12px;
-	line-height: 15px;
+	line-height: 18px;
 	display: block;
-	margin-top: 1em;
 	margin-bottom: 1em;
+	font-size: 13px;
 }
 
 a {
@@ -55,15 +55,24 @@ a:hover {
 }
 
 header {
-	padding: 30px;
+	padding: 10px;
 
 	@media screen and (max-width: 460px) {
 		padding: 16px;
 	}
 
-	text-align: left;
-	background: $theme-color;
-	color: $header-text-color;
+	text-align: right;
+	background-color: $content-background-color;
+
+	border-bottom: $border;
+
+	img {
+		height: 100px;
+
+		@media screen and (max-width: $screen-width-treshhold) {
+			height: 50px;
+		}
+	}
 
 	.title {
 		font-size: 42px;
@@ -123,6 +132,7 @@ header {
 }
 
 .content {
+	font-size: 18px;
 	background-color: $content-background-color;
 	min-height: 200px;
 	padding: 30px;
@@ -133,12 +143,11 @@ header {
 	}
 
 	text-align: left;
-	border-top: 1px solid $content-border-top-color;
-	border-bottom: 1px solid $content-border-bottom-color;
+	border-top: $border;
+	border-bottom: $border;
 
 	.title {
 		padding-bottom: 5px;
-		font-size: 18px;
 	}
 }
 
