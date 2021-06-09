@@ -4,9 +4,8 @@
   "description": "Unboxing Solutions website",
   "author": "Jurriaan Pruijs",
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-sass": "^2.1.0",
-    "gulp-shell": "^0.5.1",
-    "gulp-autoprefixer": "^3.1.0"
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0"
   }
 }

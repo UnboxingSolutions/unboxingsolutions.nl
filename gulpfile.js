@@ -1,28 +1,23 @@
-'use strict';
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const del = require('del');
 
-var gulp = require('gulp');
-var shell = require('gulp-shell');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-
-gulp.task('default', ['scss', 'scss_watch', 'start_server']);
-
-var paths = {
-	styles : {
-		src: 'scss/**/*.scss',
-		dest: 'css/'
-	}
-};
-
-gulp.task('scss', function() {
-	gulp.src(paths.styles.src)
-		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer())
-		.pipe(gulp.dest(paths.styles.dest))
+gulp.task('styles', () => {
+    return gulp.src('scss/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./css/'));
 });
 
-gulp.task('scss_watch', function() {
-	gulp.watch(paths.styles.src, ['scss']);
+gulp.task('clean', () => {
+    return del([
+        'css/main.css',
+    ]);
 });
 
-gulp.task('start_server', shell.task(['python3 -m http.server 5000']));
+gulp.task('watch', () => {
+    gulp.watch('sass/**/*.scss', (done) => {
+        gulp.series(['clean', 'styles'])(done);
+    });
+});
+
+gulp.task('default', gulp.series(['clean', 'styles']));
