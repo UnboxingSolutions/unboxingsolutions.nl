@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
+    <link rel="icon" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
     <title>Sound Matching</title>
     <style>
         :root {
@@ -34,6 +36,15 @@
             margin-top: 0;
             font-size: clamp(2rem, 7vw, 3rem);
             line-height: 1.05;
+        }
+
+        .app-icon {
+            display: block;
+            width: 6rem;
+            height: 6rem;
+            margin-bottom: 1.25rem;
+            border-radius: 1.35rem;
+            box-shadow: 0 .4rem 1.2rem rgb(30 50 80 / 18%);
         }
 
         p {
@@ -99,6 +110,7 @@
 </head>
 <body>
 <main>
+    <img class="app-icon" src="app-icon.png" alt="">
     <h1>Sound Matching</h1>
 
     <section id="sound-set" hidden aria-labelledby="sound-set-heading">
@@ -106,9 +118,9 @@
         <p>Open it in Sound Matching. You may be asked to complete the parental challenge before viewing the online library.</p>
         <div class="actions">
             <a class="button" id="open-app" href="#">Open in Sound Matching</a>
-            <a class="button secondary" href="https://apps.apple.com/app/id1602926022">Get Sound Matching on the App Store</a>
+            <a class="button secondary" id="app-store" href="https://apps.apple.com/app/id1602926022">Get Sound Matching on the App Store</a>
         </div>
-        <p id="open-help" role="status">If the app does not open, install it from the App Store and then use this link again.</p>
+        <p id="open-help" role="status" aria-live="polite">If the app does not open, install it from the App Store and then use this link again.</p>
     </section>
 
     <section id="general" aria-labelledby="support-heading">
@@ -136,6 +148,25 @@
         document.getElementById("sound-set").hidden = false;
         document.getElementById("general").hidden = true;
         document.title = "Open shared sound set — Sound Matching";
+
+        let fallbackTimer;
+        openButton.addEventListener("click", () => {
+            const status = document.getElementById("open-help");
+            status.textContent = "Trying to open Sound Matching…";
+            clearTimeout(fallbackTimer);
+            fallbackTimer = setTimeout(() => {
+                if (document.visibilityState === "visible") {
+                    status.textContent = "Sound Matching did not open. It may not be installed; you can get it from the App Store.";
+                    document.getElementById("app-store").textContent = "Continue to the App Store";
+                }
+            }, 1800);
+        });
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "hidden") {
+                clearTimeout(fallbackTimer);
+            }
+        });
     }
 </script>
 </body>
